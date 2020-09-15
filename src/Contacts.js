@@ -3,7 +3,12 @@ import Contact from "./Contact";
 import { Table, Label } from "semantic-ui-react";
 import EditableContacts from "./EditableContact";
 
-const Contacts = ({ contactsProp, deleteContactPropsFromApp }) => {
+const Contacts = ({
+  contactsProp,
+  deleteContactPropsFromApp,
+  showEditing,
+  handleEdit1,
+}) => {
   // function renderContacts() {
   //   contactsProp.map((c) => {
   //     return <Contact key={c.id} {...c} color="red" />;
@@ -13,7 +18,15 @@ const Contacts = ({ contactsProp, deleteContactPropsFromApp }) => {
   const renderContacts = () => {
     return contactsProp.map((c) => {
       // return <Contact key={c.id} {...c} color="red" />;
-      return <Contact key={c.id} {...c} x={deleteContactPropsFromApp} />;
+      return (
+        <Contact
+          key={c.id}
+          {...c}
+          x={deleteContactPropsFromApp}
+          showEditing={showEditing}
+          handleEdit2={handleEdit1}
+        />
+      );
     });
   };
 

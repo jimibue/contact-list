@@ -12,14 +12,13 @@ class App extends Component {
       { id: 3, name: "Bob", phone: "123-345-123" },
     ],
     showForm: true,
-    showEdit: false,
+    showEditing: false,
   };
   toggleForm = () => {
     this.setState({ showForm: !this.state.showForm });
   };
 
   deleteContact = (id) => {
-    debugger;
     const { contactsList } = this.state;
     const filteredContacts = contactsList.filter(
       (contact) => contact.id !== id
@@ -38,8 +37,29 @@ class App extends Component {
       contactsList: [newContact, ...this.state.contactsList],
     });
   };
+  toggleEdit = () => {
+    this.setState({
+      showEditing: !this.state.showEditing,
+    });
+  };
+
+  handleEdit = (id, inputVal, inputName) => {
+    const { contactsList } = this.state;
+    console.log(inputVal);
+    const updatedContacts = contactsList.map((contact) => {
+      if (contact.id === id) {
+        return { ...contact, [inputName]: inputVal };
+      }
+      return contact;
+    });
+    console.log(updatedContacts);
+    this.setState({
+      contactsList: updatedContacts,
+    });
+  };
+
   render() {
-    const { showForm, contactsList, showEdit } = this.state;
+    const { showForm, contactsList, showEditing } = this.state;
     return (
       <Container style={{ paddingTop: "25px" }}>
         <Header as="h1">Contact List</Header>
@@ -48,10 +68,14 @@ class App extends Component {
         </Button>
 
         {showForm && <ContactForm addContactMethodProp={this.addContact} />}
-
+        <Button circular size="tiny" onClick={this.toggleEdit}>
+          {showEditing ? "Done Editing" : "Edit"}
+        </Button>
         <Contacts
+          showEditing={showEditing}
           deleteContactPropsFromApp={this.deleteContact}
           contactsProp={contactsList}
+          handleEdit1={this.handleEdit}
         />
       </Container>
     );
