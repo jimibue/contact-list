@@ -1,21 +1,35 @@
 import React from "react";
 import Contact from "./Contact";
+import { Table, Label } from "semantic-ui-react";
 
 const Contacts = ({ contactsProp }) => {
-  //render contacts how do I get contacts?
-  // return props.contactsProp.map((c) => {
-  //   return <div>{c.name}</div>;
-  // });
+  // function renderContacts() {
+  //   contactsProp.map((c) => {
+  //     return <Contact key={c.id} {...c} color="red" />;
+  //   });
+  // }
+
+  const renderContacts = () => {
+    return contactsProp.map((c) => {
+      return <Contact key={c.id} {...c} color="red" />;
+    });
+  };
 
   return (
-    <div>
-      <h1>working</h1>
-      {contactsProp.map((c) => {
-        // c = { id: 3, name: "Bob", phone: "123-345-123" },
-        return <Contact key={c.id} {...c} color="red" />;
-      })}
-    </div>
+    <Table celled>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>NAME</Table.HeaderCell>
+          <Table.HeaderCell>PHONE</Table.HeaderCell>
+          <Table.HeaderCell>ACTIONS</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+
+      <Table.Body>{renderContacts()}</Table.Body>
+    </Table>
   );
 };
 
 export default Contacts;
+
+// export default Contacts;

@@ -1,12 +1,25 @@
 import React from "react";
+import { Button, Table } from "semantic-ui-react";
 
-const Contact = ({ id, name, phone, color }) => {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <p>{phone}</p>
-    </div>
-  );
-};
+// const Contact = ({ id, name, phone, color }) => {
+//   //not doing anything
+//   return (
+//     <Table.Row>
+//       <Table.Cell>{name}</Table.Cell>
+//       <Table.Cell>{phone}</Table.Cell>
+//       <Table.Cell>Cell</Table.Cell>
+//     </Table.Row>
+//   );
+// };
+
+const Contact = ({ name, phone }) => (
+  <Table.Row>
+    <Table.Cell>{name}</Table.Cell>
+    <Table.Cell>{phone}</Table.Cell>
+    <Table.Cell>
+      <Button color="red">Delete</Button>
+    </Table.Cell>
+  </Table.Row>
+);
 
 export default Contact;

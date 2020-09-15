@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Button } from "semantic-ui-react";
+import { Button, Container, Header } from "semantic-ui-react";
 import Contacts from "./Contacts";
+import ContactForm from "./ContactForm";
 
 class App extends Component {
   state = {
@@ -17,14 +18,16 @@ class App extends Component {
   };
   render() {
     return (
-      <div>
-        <h1>Contact List</h1>
+      <Container style={{ paddingTop: "25px" }}>
+        <Header as="h1">Contact List</Header>
         <Button circular size="tiny" onClick={this.handleClick}>
           my button
         </Button>
 
+        <ContactForm />
+
         <Contacts contactsProp={this.state.contactsList} />
-      </div>
+      </Container>
     );
   }
 }
