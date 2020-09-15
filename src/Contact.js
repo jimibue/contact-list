@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Table } from "semantic-ui-react";
+import ContactForm from "./ContactForm";
 
 // const Contact = ({ id, name, phone, color }) => {
 //   //not doing anything
@@ -12,14 +13,18 @@ import { Button, Table } from "semantic-ui-react";
 //   );
 // };
 
-const Contact = ({ name, phone }) => (
-  <Table.Row>
-    <Table.Cell>{name}</Table.Cell>
-    <Table.Cell>{phone}</Table.Cell>
-    <Table.Cell>
-      <Button color="red">Delete</Button>
-    </Table.Cell>
-  </Table.Row>
+const Contact = ({ name, phone, id, x }) => (
+  <>
+    <Table.Row>
+      <Table.Cell>{name}</Table.Cell>
+      <Table.Cell>{phone}</Table.Cell>
+      <Table.Cell>
+        <Button onClick={() => x(id)} color="red">
+          Delete
+        </Button>
+      </Table.Cell>
+    </Table.Row>
+  </>
 );
 
 export default Contact;

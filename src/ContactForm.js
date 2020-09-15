@@ -15,6 +15,8 @@ export default class ContactForm extends React.Component {
       phone: "",
       age: "",
     });
+
+    this.props.addContactMethodProp(this.state);
     // this working for now, but now I need to pass this
     // data to my state in app
   };
